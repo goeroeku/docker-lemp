@@ -11,7 +11,7 @@ services:
     volumes_from:
       - php
   php:
-    build: php-7.0-fpm-custom
+    build: php-7.1-fpm-custom
     environment:
       - TYPO3_CONTEXT=Development/Docker
     links:
@@ -21,6 +21,8 @@ services:
       - ./htdocs:/var/www/html
   db:
     image: mariadb:10.1
+    ports:
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=secret
     volumes:
